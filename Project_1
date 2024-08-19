@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fauxico</title>
+  <style>
+    header {
+      display: flex;
+      gap: 50em;
+    }
+
+    header img {
+      height: 100px;
+      width: 100px;
+      margin: 0px 10px;
+    }
+
+    header ul {
+      display: flex;
+      gap: 20px;
+      margin: 10px;
+    }
+
+    header ul li {
+      list-style: none;
+    }
+
+    header ul li a {
+      text-decoration: none;
+      font-size: 22px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: black;
+      position: relative;
+    }
+
+    header ul li a:hover:before {
+      width: 30%;
+    }
+
+    header ul li a.active:before {
+      position: absolute;
+      content: "";
+      width: 37%;
+      height: 1px;
+      border-bottom: 2px solid black;
+      bottom: -6px;
+    }
+    header ul li a:before {
+      position: absolute;
+      content: "";
+      width: 0%;
+      height: 1px;
+      border-bottom: 2px solid gray;
+      bottom: -6px;
+      transition: width .3s;
+    }
+
+    .btns {
+      display: flex;
+      gap: 20px;
+      margin: 35px 15px;
+    }
+
+    .primary-btn {
+      color: black;
+      font-weight: bold;
+      font-size: 20px;
+      background-color: rgb(220, 195, 191);
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+    }
+
+    .primary-btn:hover{
+      background-color: rgb(188, 185, 159);
+    }
+
+    .secondary-btn {
+      color: black;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 100;
+      padding: 10px 0px;
+    }
+
+    .secondary-btn p{
+      display: inline;
+      cursor: pointer;
+      width: 200px;
+      transition: transform .3s;
+    }
+
+
+    .secondary-btn p:hover{
+      transform: translateX(50px);
+    }
+
+    .news p.employees {
+      font-size: 35px;
+      margin: 0px;
+      font-weight: 200;
+      line-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    p.details {
+      font-size: 18px;
+      margin: 0;
+
+    }
+
+    main {
+      display: flex;
+      gap: 50px;
+    }
+
+    .news {
+      width: 500px;
+      display: flex;
+      gap: 30px;
+      border: 1px solid black;
+      border-radius: 8px;
+      padding: 30px;
+      position: relative;
+      margin: 20px 0px;
+    }
+
+    .left-col {
+      width: 600px;
+      margin: 2px 10px;
+    }
+
+    .left-col p {
+      font-size: 20px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .left-col h1 {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 50px;
+      margin: 5px 5px;
+    }
+
+    .right-col {
+      display: grid;
+      gap: 15px;
+      grid-template-columns: repeat(2, auto);
+      grid-template-areas:
+        "left right"
+        "left bottom"
+      ;
+      height: 450px;
+      width: 450px
+    }
+
+    .card {
+      background-color: gray;
+      border-radius: 08px;
+      padding: 11px;
+      display: flex;
+      transition: background-size 3s;
+    }
+
+    .card:hover{
+      background-size: 125%;
+    }
+
+    .card-details {
+      background: white;
+      border-radius: 6px;
+      padding: 20px;
+      display: flex;
+      gap: 35px;
+      margin-top: auto;
+      height: 35px;
+      width: 180px;
+      margin-bottom: -2px;
+      transition: transform .8s;
+
+    }
+    .card:hover .card-details{
+      transform: translateY(-16px);
+    }
+
+    .card1 {
+      grid-area: left;
+      background: url('images/cloth1.jpeg') no-repeat;
+      background-size: cover;
+      background-position: center;
+
+    }
+
+    .card2 {
+      grid-area: right;
+      background: url('images/cloth2.jpeg') no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card3 {
+      grid-area: bottom;
+      background: url('images/cloth3.jpg') no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-details a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      font-weight: bold;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .card-details p {
+      font-size: 16px;
+      margin-top: 6px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    }
+
+    .overlay{
+      position: absolute;
+      z-index: 999;
+      background: white;
+      width: 100%;
+      height: 100%;
+      animation: reveal 1s ease-in forwards;
+      transform-origin: bottom;
+    }
+
+    @keyframes reveal {
+      from{
+      transform: scaleY(1);
+      }
+      to{
+        transform: scaleY(0);
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="overlay"></div>
+  <div class="wrapper">
+    <header>
+      <img src="images/logonew.svg" alt="logo">
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <div class="left-col">
+        <h1>Quality apperal without the price tag</h1>
+        <p>No need to spend $xxx on apperal just for the name's sake.
+          Our premium apperal is made from the same stutt.</p>
+        <div class="btns">
+          <a href="#" class="primary-btn">Browse our collection</a>
+          <a href="#" class="secondary-btn">Spring 23' Collection <p> &#8594; </p></a>
+        </div>
+        <div class="news">
+          <p class="employees">50K </p>
+          <p class="details">We are proud to annouce that we now employ a workforce of over <strong>50,000</strong>.
+            It's all possible because of you.</p>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="card card1">
+          <div class="card-details">
+            <div>
+              <a href="#" class="p-title">Fauxica Sport</a>
+              <p>Running Shoes</p>
+            </div>
+            <p class="price">$49</p>
+          </div>
+        </div>
+        <div class="card card2">
+          <div class="card-details">
+            <div>
+              <a href="#" class="p-title">Fauxica Sport</a>
+              <p>Running Shoes</p>
+            </div>
+            <p class="price">$49</p>
+          </div>
+        </div>
+        <div class="card card3">
+          <div class="card-details">
+            <div>
+              <a href="#" class="p-title">Fauxica Sport</a>
+              <p>Running Shoes</p>
+            </div>
+            <p class="price">$49</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
